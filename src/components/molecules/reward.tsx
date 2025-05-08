@@ -75,7 +75,7 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
       </IonCardHeader>
 
       <div className="p-0">
-        <IonCardSubtitle>Description</IonCardSubtitle>
+        <IonCardSubtitle>Description:</IonCardSubtitle>
         <span>{reward.description}</span>
       </div>
 

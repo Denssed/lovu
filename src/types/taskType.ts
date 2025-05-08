@@ -3,7 +3,6 @@ export type taskType = {
   title: string;
   description: string;
   category: string;
-  image: string;
   points: number;
   createdAt: Date;
 };

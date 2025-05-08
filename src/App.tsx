@@ -10,7 +10,7 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Rewards from "./pages/rewards/Rewards";
-import Tab2 from "./pages/activity/Tab2";
+import Tasks from "./pages/activity/Activity";
 import Tab3 from "./pages/historical/Tab3";
 
 /* Core CSS required for Ionic components to work properly */
@@ -79,13 +79,13 @@ const App: React.FC = () => (
             <Rewards />
           </Route>
           <Route exact path="/activity">
-            <Tab2 />
+            <Tasks />
           </Route>
           <Route path="/historical">
             <Tab3 />
           </Route>
           <Route exact path="/">
-            <Redirect to="/rewards" />
+            <Redirect to="/activity" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

@@ -1,6 +1,7 @@
+import { rewardType } from "../../types/rewadType";
 import RewardCard from "../molecules/reward";
 
-const rewardData = [
+const rewardData: rewardType[] = [
   {
     id: "1",
     title: "Reward 1",
