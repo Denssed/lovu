@@ -1,11 +1,9 @@
-interface ContainerProps {
-  name: string;
-}
+import { rewardType } from "../types/rewadType";
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const ExploreContainer: React.FC<rewardType> = (rewad: rewardType) => {
   return (
-    <div className="container">
-      <strong>{name}</strong>
+    <div className="flex flex-col items-center justify-center h-full">
+      <strong className="text-2xl font-bold">{rewad.title}</strong>
       <p>
         Explore{" "}
         <a
