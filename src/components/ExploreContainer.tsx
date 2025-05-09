@@ -1,21 +1,43 @@
+import { useEffect, useState } from "react";
+import fire from "../configuration"
+import { getDatabase, ref, set, onValue } from "firebase/database";
+
 interface ContainerProps {
   name: string;
 }
 
 const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+  
+  const [data, setData] = useState<string[]>([]);
+
+  useEffect(() => {
+  
+    const database = getDatabase(fire)
+
+    const collectionRef = ref(database, "test")
+
+    const fetchData = () => {
+      onValue(collectionRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const dataArray = Object.values(data) as string[];
+          setData(dataArray);
+        }
+      });
+    }
+    fetchData();
+  }, []);
+  
+  
+  
   return (
-    <div className="container">
-      <strong>{name}</strong>
-      <p>
-        Explore{" "}
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://ionicframework.com/docs/components"
-        >
-          UI Components
-        </a>
-      </p>
+    <div>
+      <h1>Data from database:</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 };
