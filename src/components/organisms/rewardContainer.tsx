@@ -1,82 +1,111 @@
+import { useEffect, useState } from "react";
 import { rewardType } from "../../types/rewadType";
 import RewardCard from "../molecules/reward";
+import { getDatabase, onValue, ref } from "firebase/database";
+import fire from "../../configuration";
 
-const rewardData: rewardType[] = [
+let rewardData: rewardType[] = [
   {
     id: "1",
-    title: "Reward 1",
-    description: "Description for Reward 1",
+    title: "Free Coffee",
+    description: "Enjoy a free cup of coffee at your favorite café.",
     category: "food",
-    pointCost: 100,
+    pointCost: 50,
     redeemAt: new Date(),
   },
-  {
-    id: "2",
-    title: "Reward 2",
-    description: "Description for Reward 2",
-    category: "travel",
-    pointCost: 200,
-    redeemAt: new Date(),
-  },
-  {
-    id: "3",
-    title: "Reward 3",
-    description: "Description for Reward 3",
-    category: "self-care",
-    pointCost: 300,
-    redeemAt: new Date(),
-  },
-  {
-    id: "4",
-    title: "Reward 4",
-    description: "Description for Reward 4",
-    category: "food",
-    pointCost: 400,
-    redeemAt: new Date(),
-  },
-  {
-    id: "5",
-    title: "Reward 5",
-    description: "Description for Reward 5",
-    category: "travel",
-    pointCost: 500,
-    redeemAt: new Date(),
-  },
-  {
-    id: "6",
-    title: "Reward 6",
-    description: "Description for Reward 6",
-    category: "self-care",
-    pointCost: 600,
-    redeemAt: new Date(),
-  },
-  {
-    id: "7",
-    title: "Reward 7",
-    description: "Description for Reward 7",
-    category: "food",
-    pointCost: 700,
-    redeemAt: new Date(),
-  },
-  {
-    id: "8",
-    title: "Reward 8",
-    description: "Description for Reward 8",
-    category: "travel",
-    pointCost: 800,
-    redeemAt: new Date(),
-  },
-  {
-    id: "9",
-    title: "Reward 9",
-    description: "Description for Reward 9",
-    category: "self-care",
-    pointCost: 900,
-    redeemAt: new Date(),
-  },
+  // {
+  //   id: "2",
+  //   title: "Weekend Getaway",
+  //   description: "A two-night stay at a cozy countryside hotel.",
+  //   category: "travel",
+  //   pointCost: 500,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "3",
+  //   title: "Spa Day",
+  //   description: "Relax with a full day of spa treatments.",
+  //   category: "self-care",
+  //   pointCost: 300,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "4",
+  //   title: "Dinner for Two",
+  //   description: "A gourmet dinner for two at a fine dining restaurant.",
+  //   category: "food",
+  //   pointCost: 200,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "5",
+  //   title: "Flight Voucher",
+  //   description: "A $100 voucher for your next flight.",
+  //   category: "travel",
+  //   pointCost: 400,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "6",
+  //   title: "Yoga Class Package",
+  //   description: "A package of 5 yoga classes at a local studio.",
+  //   category: "self-care",
+  //   pointCost: 150,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "7",
+  //   title: "Gourmet Chocolate Box",
+  //   description: "A box of premium handmade chocolates.",
+  //   category: "food",
+  //   pointCost: 100,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "8",
+  //   title: "City Tour",
+  //   description: "A guided tour of the city's top attractions.",
+  //   category: "travel",
+  //   pointCost: 250,
+  //   redeemAt: new Date(),
+  // },
+  // {
+  //   id: "9",
+  //   title: "Meditation App Subscription",
+  //   description: "A 6-month subscription to a popular meditation app.",
+  //   category: "self-care",
+  //   pointCost: 120,
+  //   redeemAt: new Date(),
+  // },
 ];
 
+
+
 const RewardContainer: React.FC = () => {
+
+  const [data, setData] = useState<rewardType[]>([]);
+
+  useEffect(() => {
+  
+    const database = getDatabase(fire)
+
+    const collectionRef = ref(database, "test")
+
+    const fetchData = () => {
+      onValue(collectionRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const dataArray = Object.values(data) as rewardType[];
+          setData(dataArray);
+        }
+      });
+    }
+    fetchData();
+
+    rewardData = data
+
+  }, [data]);
+
   return (
     <div className="flex flex-col gap-4">
       {rewardData.map((reward) => (
