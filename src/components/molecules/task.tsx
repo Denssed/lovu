@@ -16,25 +16,33 @@ const TaskCard: React.FC<taskType> = (task: taskType) => {
               disabled={false}
               outline={false}
               isPoint={false}
+              category={task.category}
+              isButton={false}
             ></ChipComponent>
-            <ChipComponent
-              title={task.points.toString()}
-              disabled={false}
-              outline={false}
-              isPoint={true}
-            ></ChipComponent>
+            {task.points.map((point) => (
+              <ChipComponent
+                key={point.id}
+                title={point.value.toString()}
+                disabled={false}
+                outline={false}
+                isPoint={true}
+                category={point.category}
+                isButton={false}
+              ></ChipComponent>
+            ))}
           </div>
         </IonCardHeader>
 
-        <div className="p-0">
-          <IonCardSubtitle>Description:</IonCardSubtitle>
-          <span>{task.description}</span>
-        </div>
       </div>
       <div className="flex flex-col items-center justify-center gap-2 w-20">
         <IonCardSubtitle className="flex flex-col items-center justify-center gap-2">
           <span className="text-xs">At:</span>
-          {`${task.createdAt.getHours() % 12 || 12}:${task.createdAt.getMinutes().toString().padStart(2, '0')} ${task.createdAt.getHours() >= 12 ? 'PM' : 'AM'}`}
+          {`${task.createdAt.getHours() % 12 || 12}:${task.createdAt
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")} ${
+            task.createdAt.getHours() >= 12 ? "PM" : "AM"
+          }`}
         </IonCardSubtitle>
       </div>
     </div>

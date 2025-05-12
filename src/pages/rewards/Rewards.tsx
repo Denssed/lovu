@@ -1,14 +1,29 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import RewardContainer from '../../components/organisms/rewardContainer';
+import HeaderComponent from '../../components/molecules/header';
+import { headerType } from '../../types/headerType';
 
 const Rewards: React.FC = () => {
+
+  const headerData: headerType = {
+    title: 'Rewards',
+    name: 'John Doe',
+    message: 'You have 100 points',
+    points: [
+      {
+        id: 1, value: 20,
+        category: 'common'
+      },
+      {
+        id: 2, value: 10,
+        category: 'special'
+      }
+    ]
+  };
+
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar className='p-2'>
-          <IonTitle>Rewards</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <HeaderComponent title={headerData.title} name={headerData.name} message={headerData.message} points={headerData.points} />
       <IonContent fullscreen>
         <RewardContainer />
       </IonContent>

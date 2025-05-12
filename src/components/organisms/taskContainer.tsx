@@ -8,60 +8,69 @@ import TaskCard from "../molecules/task";
 const taskData: taskType[] = [
   {
     id: "1",
-    title: "Prepare a Healthy Breakfast",
-    description: "Cook a nutritious breakfast with eggs, avocado, and toast.",
-    category: "food",
-    points: 100,
+    title: "Practice Mindfulness",
+    category: "self-care",
+    points: [
+      { id: 1, category: 'common', value: 100 },
+      { id: 2, category: 'special', value: 20 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "2",
-    title: "Plan a Weekend Getaway",
-    description: "Research and plan a short trip to a nearby destination.",
-    category: "travel",
-    points: 200,
+    title: "Read a Self-Help Book",
+    category: "self-care",
+    points: [
+      { id: 1, category: 'common', value: 200 },
+      { id: 2, category: 'special', value: 50 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "3",
-    title: "Meditation Session",
-    description:
-      "Spend 15 minutes meditating to clear your mind and reduce stress.",
-    category: "self-care",
-    points: 300,
+    title: "Organize Study Notes",
+    category: "study",
+    points: [
+      { id: 1, category: 'common', value: 300 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "4",
-    title: "Try a New Recipe",
-    description: "Cook a new dish you've never tried before for dinner.",
-    category: "food",
-    points: 400,
+    title: "Review Flashcards",
+    category: "study",
+    points: [
+      { id: 1, category: 'common', value: 400 },
+      { id: 2, category: 'special', value: 30 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "5",
-    title: "Book a Flight",
-    description: "Find and book a flight for your next vacation.",
-    category: "travel",
-    points: 500,
+    title: "Take a Relaxing Bath",
+    category: "self-care",
+    points: [
+      { id: 1, category: 'common', value: 500 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "6",
-    title: "Journal Your Thoughts",
-    description:
-      "Write down your thoughts and feelings in a journal to reflect on your day.",
-    category: "self-care",
-    points: 600,
+    title: "Watch an Educational Video",
+    category: "study",
+    points: [
+      { id: 1, category: 'common', value: 600 },
+      { id: 2, category: 'special', value: 40 }
+    ],
     createdAt: new Date(),
   },
   {
     id: "7",
-    title: "Bake a Dessert",
-    description: "Bake a delicious dessert like cookies or a cake.",
-    category: "food",
-    points: 700,
+    title: "Write in a Gratitude Journal",
+    category: "self-care",
+    points: [
+      { id: 1, category: 'common', value: 700 }
+    ],
     createdAt: new Date(),
   },
 ];
@@ -105,7 +114,6 @@ const TaskContainer: React.FC = () => {
           key={task.id}
           id={task.id}
           title={task.title}
-          description={task.description}
           category={task.category}
           points={task.points}
           createdAt={task.createdAt}

@@ -1,8 +1,10 @@
+import { categoryTaskType } from "./categoryTaskType";
+import { pointsType } from "./pointsType";
+
 export type taskType = {
   id: string;
   title: string;
-  description: string;
-  category: string;
-  points: number;
+  category: categoryTaskType;
+  points: pointsType[];
   createdAt: Date;
 };

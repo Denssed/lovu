@@ -2,20 +2,27 @@ import { IonCardHeader, IonCardSubtitle, IonCardTitle } from "@ionic/react";
 import { rewardType } from "../../types/rewadType";
 import IconComponent from "../atoms/icon";
 import { iconType } from "../../types/iconType";
-import { rewardCategories } from "../../enums/rewardCategories";
+import {
+  rewardCategories,
+  // categoryRewardType, // Removed as it is not exported
+} from "../../enums/rewardCategories";
 import ChipComponent from "../atoms/chip";
 import selfCareImg from "../../assets/svgs/self-care.svg";
 import foodImg from "../../assets/svgs/food.svg";
 import travelImg from "../../assets/svgs/travel.svg";
 import ButtonComponent from "../atoms/button";
 import { buttonType } from "../../types/buttonType";
+import { pointsType } from "../../types/pointsType";
+import SpanComponent from "../atoms/spanButton";
 
-const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
+const RewardCard: React.FC<rewardType> = (
+  reward: rewardType & { category: string } // Updated to use string type
+) => {
   const redeemButton: buttonType = {
-    title: "Redeem",
+    title: "Redeem for -",
     expand: "full",
-    outline: "solid",
-    isTask: false
+    outline: "outline",
+    isTask: false,
   };
 
   const rewardIcon: iconType = {
@@ -47,7 +54,7 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
   return (
     <div className="p-2 flex flex-col gap-2">
       <IonCardHeader className="flex flex-col items-center justify-between gap-4">
-        <div className="flex flex-row items-center justify-start gap-6 w-full">
+        <div className="flex flex-row items-center justify-start gap-2 w-full">
           <IconComponent
             name={rewardIcon.name}
             size={rewardIcon.size}
@@ -55,19 +62,25 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
           />
           <IonCardTitle>{reward.title}</IonCardTitle>
         </div>
-        <div className="flex flex-row items-center justify-start gap-6 w-full">
+        <div className="flex flex-row items-center justify-start gap-4 w-full">
           <ChipComponent
             title={reward.category}
             disabled={false}
             outline={false}
             isPoint={false}
+            category={reward.category}
+            isButton={false}
           ></ChipComponent>
-          <ChipComponent
-            title={reward.pointCost.toString()}
-            disabled={false}
-            outline={false}
-            isPoint={true}
-          ></ChipComponent>
+          {/* {reward.points.map((point) => (
+            <ChipComponent
+              key={point.id}
+              title={point.value.toString()}
+              disabled={false}
+              outline={false}
+              isPoint={true}
+              category={point.category}
+            ></ChipComponent>
+          ))} */}
         </div>
       </IonCardHeader>
 
@@ -78,11 +91,19 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
 
       <div>
         <ButtonComponent
-          title={redeemButton.title}
           expand={redeemButton.expand}
+          title={redeemButton.title}
           outline={redeemButton.outline}
           isTask={redeemButton.isTask}
-        />
+        >
+          {
+            reward.points.map((point: pointsType) => (
+              <SpanComponent
+                key={point.id} id={point.id} category={point.category} value={point.value}                
+              ></SpanComponent>
+            ))
+          }
+        </ButtonComponent>
       </div>
     </div>
   );
