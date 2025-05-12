@@ -52,7 +52,7 @@ const RewardCard: React.FC<rewardType> = (
   }
 
   return (
-    <div className="p-2 flex flex-col gap-2">
+    <div className="p-2 m-4 flex flex-col gap-2 border rounded-2xl border-gray-300">
       <IonCardHeader className="flex flex-col items-center justify-between gap-4">
         <div className="flex flex-row items-center justify-start gap-2 w-full">
           <IconComponent
@@ -71,16 +71,6 @@ const RewardCard: React.FC<rewardType> = (
             category={reward.category}
             isButton={false}
           ></ChipComponent>
-          {/* {reward.points.map((point) => (
-            <ChipComponent
-              key={point.id}
-              title={point.value.toString()}
-              disabled={false}
-              outline={false}
-              isPoint={true}
-              category={point.category}
-            ></ChipComponent>
-          ))} */}
         </div>
       </IonCardHeader>
 

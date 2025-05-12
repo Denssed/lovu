@@ -9,7 +9,13 @@ const SelectComponent: React.FC<selectType> = (select: selectType) => {
         <IonSelectOption  key={item.id} value={item.title}>
             <span>{item.title}</span>
             {item.points.map((point: pointsType) => (
-              <span key={point.id}>{` - ${point.value} P`}</span>
+              point.category === "common" ? (
+                <span key={point.id} className="text-sm text-gray-500">
+                  {point.value} P
+                </span>
+              ) : <span key={point.id} className="text-sm text-red-500">
+              {point.value} P
+            </span>
             ))}
         </IonSelectOption>
       ))}

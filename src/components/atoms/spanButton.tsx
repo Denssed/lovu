@@ -7,9 +7,9 @@ const SpanComponent: React.FC<pointsType> = (point: pointsType ) => {
   const getGradientClass = (category: string) => {
     switch (category.toLowerCase()) {
       case "common":
-        return "bg-gradient-to-r from-green-400 to-green-600 text-transparent bg-clip-text";
+        return "bg-gradient-to-r from-yellow-400 to-green-500 text-transparent bg-clip-text";
       case "special":
-        return "bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text";
+        return "bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text";
       default:
         return "bg-gradient-to-r from-gray-400 to-gray-600 text-transparent bg-clip-text";
     }

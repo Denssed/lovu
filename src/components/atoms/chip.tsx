@@ -13,9 +13,9 @@ const ChipComponent: React.FC<chipType> = (chip: chipType) => {
       case "study":
         return "bg-yellow-500 text-white"; // Amarillo para "study"
       case "common":
-        return "bg-purple-500 text-white"; // Morado para "common"
+        return "bg-gradient-to-r from-yellow-400 to-green-500 text-white"; // Amarillo a verde para "common"
       case "special":
-        return "bg-orange-500 text-white"; // Naranja para "special"
+        return "bg-gradient-to-r from-blue-400 to-purple-500 text-white"; // Azul a púrpura para "special"
       default:
         return "bg-gray-500 text-white"; // Gris para categorías desconocidas
     }

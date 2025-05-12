@@ -143,7 +143,7 @@ const RewardContainer: React.FC = () => {
   }, [data]);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       {rewardData.map((reward) => (
         <RewardCard
           key={reward.id}

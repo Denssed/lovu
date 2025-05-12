@@ -11,8 +11,8 @@ const taskData: taskType[] = [
     title: "Practice Mindfulness",
     category: "self-care",
     points: [
-      { id: 1, category: 'common', value: 100 },
-      { id: 2, category: 'special', value: 20 }
+      { id: 1, category: "common", value: 100 },
+      { id: 2, category: "special", value: 20 },
     ],
     createdAt: new Date(),
   },
@@ -21,8 +21,8 @@ const taskData: taskType[] = [
     title: "Read a Self-Help Book",
     category: "self-care",
     points: [
-      { id: 1, category: 'common', value: 200 },
-      { id: 2, category: 'special', value: 50 }
+      { id: 1, category: "common", value: 200 },
+      { id: 2, category: "special", value: 50 },
     ],
     createdAt: new Date(),
   },
@@ -30,9 +30,7 @@ const taskData: taskType[] = [
     id: "3",
     title: "Organize Study Notes",
     category: "study",
-    points: [
-      { id: 1, category: 'common', value: 300 }
-    ],
+    points: [{ id: 1, category: "common", value: 300 }],
     createdAt: new Date(),
   },
   {
@@ -40,8 +38,8 @@ const taskData: taskType[] = [
     title: "Review Flashcards",
     category: "study",
     points: [
-      { id: 1, category: 'common', value: 400 },
-      { id: 2, category: 'special', value: 30 }
+      { id: 1, category: "common", value: 400 },
+      { id: 2, category: "special", value: 30 },
     ],
     createdAt: new Date(),
   },
@@ -49,9 +47,7 @@ const taskData: taskType[] = [
     id: "5",
     title: "Take a Relaxing Bath",
     category: "self-care",
-    points: [
-      { id: 1, category: 'common', value: 500 }
-    ],
+    points: [{ id: 1, category: "common", value: 500 }],
     createdAt: new Date(),
   },
   {
@@ -59,8 +55,8 @@ const taskData: taskType[] = [
     title: "Watch an Educational Video",
     category: "study",
     points: [
-      { id: 1, category: 'common', value: 600 },
-      { id: 2, category: 'special', value: 40 }
+      { id: 1, category: "common", value: 600 },
+      { id: 2, category: "special", value: 40 },
     ],
     createdAt: new Date(),
   },
@@ -68,9 +64,7 @@ const taskData: taskType[] = [
     id: "7",
     title: "Write in a Gratitude Journal",
     category: "self-care",
-    points: [
-      { id: 1, category: 'common', value: 700 }
-    ],
+    points: [{ id: 1, category: "common", value: 700 }],
     createdAt: new Date(),
   },
 ];
@@ -98,7 +92,8 @@ const TaskContainer: React.FC = () => {
             interface={selectTasskData.interface}
             placeholder={selectTasskData.placeholder}
             data={selectTasskData.data}
-          />
+          >
+          </SelectComponent>
         </div>
         <div className="w-10">
           <ButtonComponent
