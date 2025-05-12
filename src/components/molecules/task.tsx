@@ -32,17 +32,17 @@ const TaskCard: React.FC<taskType> = (task: taskType) => {
             ))}
           </div>
         </IonCardHeader>
-
       </div>
       <div className="flex flex-col items-center justify-center gap-2 w-20">
         <IonCardSubtitle className="flex flex-col items-center justify-center gap-2">
           <span className="text-xs">At:</span>
-          {`${task.createdAt.getHours() % 12 || 12}:${task.createdAt
-            .getMinutes()
-            .toString()
-            .padStart(2, "0")} ${
-            task.createdAt.getHours() >= 12 ? "PM" : "AM"
-          }`}
+          {(() => {
+            const createdAt = new Date(task.createdAt); // Convierte a un objeto Date
+            return `${createdAt.getHours() % 12 || 12}:${createdAt
+              .getMinutes()
+              .toString()
+              .padStart(2, "0")} ${createdAt.getHours() >= 12 ? "PM" : "AM"}`;
+          })()}
         </IonCardSubtitle>
       </div>
     </div>
