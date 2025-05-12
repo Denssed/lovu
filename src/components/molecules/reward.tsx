@@ -1,8 +1,4 @@
-import {
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-} from "@ionic/react";
+import { IonCardHeader, IonCardSubtitle, IonCardTitle } from "@ionic/react";
 import { rewardType } from "../../types/rewadType";
 import IconComponent from "../atoms/icon";
 import { iconType } from "../../types/iconType";
@@ -19,6 +15,7 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
     title: "Redeem",
     expand: "full",
     outline: "solid",
+    isTask: false
   };
 
   const rewardIcon: iconType = {
@@ -75,7 +72,7 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
       </IonCardHeader>
 
       <div className="p-0">
-        <IonCardSubtitle>Description</IonCardSubtitle>
+        <IonCardSubtitle>Description:</IonCardSubtitle>
         <span>{reward.description}</span>
       </div>
 
@@ -84,6 +81,7 @@ const RewardCard: React.FC<rewardType> = (reward: rewardType) => {
           title={redeemButton.title}
           expand={redeemButton.expand}
           outline={redeemButton.outline}
+          isTask={redeemButton.isTask}
         />
       </div>
     </div>

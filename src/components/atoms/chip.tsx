@@ -3,8 +3,8 @@ import { chipType } from "../../types/chipType";
 
 const ChipComponent: React.FC<chipType> = (chip: chipType) => {
   return (
-    <IonChip className="p-2" disabled={chip.disabled} outline={chip.outline}>
-      {chip.isPoint ? `${chip.title} P` : chip.title.charAt(0).toUpperCase() + chip.title.slice(1)}
+    <IonChip className="py-1 px-3" disabled={chip.disabled} outline={chip.outline}>
+      <span className="text-xs">{chip.isPoint ? `${chip.title} P` : chip.title.charAt(0).toUpperCase() + chip.title.slice(1)}</span>
     </IonChip>
   );
 };
