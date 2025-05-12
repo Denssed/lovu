@@ -1,0 +1,1 @@
+export type categoryRewardType = 'travel'| 'self-care' | 'food'

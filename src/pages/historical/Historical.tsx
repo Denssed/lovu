@@ -1,21 +1,30 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import ExploreContainer from '../../components/ExploreContainer';
+import HeaderComponent from '../../components/molecules/header';
+import { headerType } from '../../types/headerType';
 
 const Historical: React.FC = () => {
+
+  const headerData: headerType = {
+      title: 'Rewards',
+      name: 'John Doe',
+      message: 'You have 100 points',
+      points: [
+        {
+          id: 1, value: 20,
+          category: 'common'
+        },
+        {
+          id: 2, value: 10,
+          category: 'special'
+        }
+      ]
+    };
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Tab 3</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <HeaderComponent title={headerData.title} name={headerData.name} message={headerData.message} points={headerData.points} />
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 3</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <ExploreContainer />
+      <ExploreContainer />
       </IonContent>
     </IonPage>
   );
