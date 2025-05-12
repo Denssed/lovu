@@ -6,4 +6,5 @@ export type selectType = {
   placeholder: string;
   data: taskType[];
   children?: ReactNode;
+  onChange?: (event: CustomEvent) => void;
 };

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useGetData from "../../hooks/useGetData";
 import { buttonType } from "../../types/buttonType";
 import { selectType } from "../../types/selectType";
@@ -72,9 +73,18 @@ import TaskCard from "../molecules/task";
 
 
 const TaskContainer: React.FC = () => {
+
+  const [selectedTask, setSelectedTask] = useState<string | null>(null);
+
   const { data, loading, error } = useGetData<taskType[] | null>(
     "main/user/tasks"
   );
+
+  // const handleSelectChange = (event: CustomEvent) => {
+  //   setSelectedTask(event.detail.value);
+  //   console.log("Selected Task:", selectedTask);
+  //   // Aquí puedes manejar el valor seleccionado, por ejemplo, actualizar un estado
+  // };
 
   if (loading) {
     // TODO Add a loading spinner or skeleton
@@ -90,6 +100,10 @@ const TaskContainer: React.FC = () => {
     interface: "action-sheet",
     placeholder: "Select Task",
     data: data || [],
+    onChange: (event: CustomEvent) => {
+      setSelectedTask(event.detail.value); // Update state with selected value
+      console.log("Selected Task:", event.detail.value);
+    },
   };
   
   const taskButton: buttonType = {
@@ -97,7 +111,16 @@ const TaskContainer: React.FC = () => {
     expand: "block",
     outline: "solid",
     isTask: true,
+    onClick: () => {
+      if (selectedTask) {
+        console.log("Selected Task (on Button Click):", selectedTask); // Imprime el valor seleccionado
+      } else {
+        console.log("No task selected"); // Mensaje si no hay tarea seleccionada
+      }
+    },
   };
+
+  
 
   return (
     <div className="flex flex-col gap-4">
@@ -105,18 +128,13 @@ const TaskContainer: React.FC = () => {
         <div className="flex flex-col justify-start gap-2 w-full">
           <span>Add a Task to your day</span>
           <SelectComponent
-            interface={selectTasskData.interface}
-            placeholder={selectTasskData.placeholder}
-            data={selectTasskData.data}
+            {...selectTasskData}
           ></SelectComponent>
         </div>
         <div className="w-10">
           <ButtonComponent
-            title={taskButton.title}
-            expand={taskButton.expand}
-            outline={taskButton.outline}
-            isTask={taskButton.isTask}
-          />
+           {...taskButton}
+            />
         </div>
       </div>
       {data ? (
@@ -131,7 +149,7 @@ const TaskContainer: React.FC = () => {
           />
         ))
       ) : (
-        <p>No rewards available</p>
+        <p>No Tasks available</p>
       )}
     </div>
   );

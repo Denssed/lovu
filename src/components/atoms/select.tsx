@@ -3,8 +3,12 @@ import { selectType } from "../../types/selectType";
 import { pointsType } from "../../types/pointsType";
 
 const SelectComponent: React.FC<selectType> = (select: selectType) => {
+
+  const handleChange = (event: CustomEvent) => {
+    select.onChange?.(event);
+  };
   return (
-    <IonSelect interface={select.interface} placeholder={select.placeholder}>
+    <IonSelect interface={select.interface} placeholder={select.placeholder} onIonChange={handleChange}>
       {select.data.map((item) => (
         <IonSelectOption  key={item.id} value={item.title}>
             <span>{item.title} </span>

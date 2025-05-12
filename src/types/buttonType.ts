@@ -4,5 +4,6 @@ export type buttonType = {
     outline: 'clear' | 'outline' | 'solid';
     isTask: boolean;
     children?: React.ReactNode;
+    onClick?: () => void;
   };
   
