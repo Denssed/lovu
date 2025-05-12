@@ -30,11 +30,7 @@ const ExploreContainer: React.FC<object> = () => {
   return (
     <div>
       <h1>Data from database:</h1>
-      {/* <ul>
-        {data.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul> */}
+      
     </div>
   );
 };

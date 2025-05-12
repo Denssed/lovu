@@ -11,7 +11,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import Rewards from "./pages/rewards/Rewards";
 import Tasks from "./pages/activity/Activity";
-import Tab3 from "./pages/historical/Tab3";
+import Historical from "./pages/historical/Historical";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -82,7 +82,7 @@ const App: React.FC = () => (
             <Tasks />
           </Route>
           <Route path="/historical">
-            <Tab3 />
+            <Historical />
           </Route>
           <Route exact path="/">
             <Redirect to="/activity" />
