@@ -2,13 +2,16 @@ import { IonContent, IonPage } from '@ionic/react';
 import TaskContainer from '../../components/organisms/taskContainer';
 import HeaderComponent from '../../components/molecules/header';
 import { headerType } from '../../types/headerType';
+import useGetData from '../../hooks/useGetData';
+import { userDataResp } from '../../types/userDataResp';
+import { pointsType } from '../../types/pointsType';
 
 const Tasks: React.FC = () => {
 
-  const headerData: headerType = {
+  let headerData: headerType = {
       title: 'Rewards',
-      name: 'John Doe',
-      message: 'You have 100 points',
+      name: ['John Doe'],
+      message: ['You have 100 points'],
       points: [
         {
           id: 1, value: 20,
@@ -20,6 +23,25 @@ const Tasks: React.FC = () => {
         }
       ]
     };
+
+    const { data: userData, loading: userLoading, error: userError } = useGetData<userDataResp | null>("main/user/userData");
+    const { data: pointsData, loading: pointsLoading, error: pointsError } = useGetData<pointsType[] | null>("main/user/points");
+
+    console.log("data", userData);
+    console.log("loading", userLoading);
+    console.log("error", userError);
+    console.log("pointsData", pointsData);
+    console.log("pointsLoading", pointsLoading);
+    console.log("pointsError", pointsError);
+
+    headerData = {
+      title: headerData.title,
+      name: userData?.name ?? headerData.name,
+      message: userData ? userData.message : headerData.message,
+      points: pointsData ?? headerData.points,
+    };
+
+    console.log("headerData", headerData);
 
   return (
     <IonPage>

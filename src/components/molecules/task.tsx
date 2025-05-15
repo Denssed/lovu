@@ -4,29 +4,9 @@ import ChipComponent from "../atoms/chip";
 // import { rewardType } from "../../types/rewadType";
 
 const TaskCard: React.FC<taskType> = (task: taskType) => {
-  // const { setData, loading, error } = useSetData();
-
-  //  const rewardTest: rewardType = {
-  //   id: "10",
-  //   title: "New Reward",
-  //   description: "This is a new reward.",
-  //   category: "self-care",
-  //   points: [
-  //     { id: 1, category: "common", value: 100 },
-  //     { id: 2, category: "special", value: 50 },
-  //   ],
-  //   redeemAt: new Date(),
-  //   hasDiscount: false,
-  //   discount: 0
-  // }
-
-  // const handleAddReward = async (reward: rewardType) => {
-  //   await setData("main/user/rewards", reward);
-  //   alert("Reward added successfully");
-  // };
 
   return (
-    <div className="p-2 flex flex-row gap-2">
+    <div className="p-2 mx-4 flex flex-row gap-2 border rounded-2xl border-gray-300">
       <div className="flex flex-col items-start justify-start w-full gap-3">
         <IonCardHeader className="flex flex-col items-center justify-between gap-2">
           <div className="flex flex-row items-center justify-start gap-6 w-full">

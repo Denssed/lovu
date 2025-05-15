@@ -5,31 +5,10 @@
 
 const ExploreContainer: React.FC<object> = () => {
   
-  // const [data, setData] = useState<string[]>([]);
-
-  // useEffect(() => {
-  
-  //   const database = getDatabase(fire)
-
-  //   const collectionRef = ref(database, "test")
-
-  //   const fetchData = () => {
-  //     onValue(collectionRef, (snapshot) => {
-  //       const data = snapshot.val();
-  //       if (data) {
-  //         const dataArray = Object.values(data) as string[];
-  //         setData(dataArray);
-  //       }
-  //     });
-  //   }
-  //   fetchData();
-  // }, []);
-  
-  
   
   return (
-    <div>
-      <h1>Data from database:</h1>
+    <div className="flex flex-col items-center justify-center h-full">
+      <h1>Page in Progress</h1>
       
     </div>
   );

@@ -10,10 +10,10 @@ const HeaderComponent: React.FC<headerType> = (header: headerType) => {
         <div className="flex flex-row items-start justify-between gap-2 p-2">
           <div className="flex flex-col items-start gap-2">
             <IonTitle>{header.title}</IonTitle>
-            <span className="text-sm">{header.message}</span>
+            {header.message[Math.floor(Math.random() * header.message.length)]}
           </div>
           <div className="flex flex-col items-end justify-start gap-2">
-            <span>Name: {header.name}</span>
+            <span>Name: {header.name[Math.floor(Math.random() * header.name.length)]}</span>
             <span>Points</span>
             <div className="flex flex-row items-center justify-start gap-2">
               {header.points.map((point: pointsType) => (
