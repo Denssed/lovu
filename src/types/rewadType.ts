@@ -10,5 +10,6 @@ export type rewardType = {
     redeemAt: Date;
     hasDiscount: boolean;
     discount: number;
+    createdAt: Date;
   };
   
